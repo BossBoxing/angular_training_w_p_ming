@@ -1,0 +1,29 @@
+<div class="container border">
+  <!-- Open Navber -->
+  <nav class="navbar navbar-expand-lg navbar-light py-3 py-lg-4">
+    <a class="navbar-brand" href="#">Angular Training</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="employee">Employee</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Close Navbar -->
+
+  <div class="row">
+    <div class="col m- p-3 border">
+      <!-- <app-employee></app-employee> -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

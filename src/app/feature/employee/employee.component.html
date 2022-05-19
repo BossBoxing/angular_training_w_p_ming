@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+    <thead class="text-center">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Website</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employee; let i = index;">
+            <td class="text-center">{{ emp.id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.phone }}</td>
+            <td>{{ emp.website }}</td>
+        </tr>
+    </tbody>
+</table>
