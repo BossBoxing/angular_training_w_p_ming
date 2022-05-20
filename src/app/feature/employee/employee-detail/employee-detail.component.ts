@@ -59,8 +59,11 @@ export class EmployeeDetailComponent implements OnInit {
     //console.log(this.param);
   }
 
-  updateName(){
-    //this.result = this.name.value;
+  save(){
+    this.service.saveEmployee(this.employeeForm.getRawValue()).subscribe(() => {
+      // console.log('save success');
+      alert('save success!');
+    });
   }
 
   createForm(){

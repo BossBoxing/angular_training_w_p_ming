@@ -48,4 +48,9 @@ export class EmployeeService {
     return this.http.delete('https://jsonplaceholder.typicode.com/users/'+ id);
   }
 
+  saveEmployee(employee: Employee): any{
+    return this.http.put<Employee>('https://jsonplaceholder.typicode.com/users/' + employee.id
+    , employee );
+  }
+
 }

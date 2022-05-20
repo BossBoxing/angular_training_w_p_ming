@@ -37,5 +37,8 @@ export class EmployeeComponent implements OnInit {
     this.employee = this.employee.filter((emp: any) => emp.id !== id);
     // console.log(this.employee[0].id);
   }
+  // saveEmployeeByEmp(employee: Employee): any{
+  //   this.service.saveEmployee(employee);
+  // }
 
 }
