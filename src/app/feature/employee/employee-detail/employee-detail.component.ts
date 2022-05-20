@@ -65,12 +65,12 @@ export class EmployeeDetailComponent implements OnInit {
 
   createForm(){
     this.employeeForm = this.fb.group({
-      id: [null, Validators.required],
-      username: null,
-      name: null,
-      email: null,
-      phone: null,
-      website: null,
+      id: [null, [Validators.required,Validators.min(1),Validators.max(500)]],
+      username: [null, [Validators.required,Validators.maxLength(30)]],
+      name: [null,[Validators.required,Validators.maxLength(100)]],
+      email: [null,[Validators.email,Validators.maxLength(150)]],
+      phone: [null,Validators.maxLength(50)],
+      website: [null, Validators.maxLength(200)],
       address: this.fb.group({
         street: null,
         suite: null,
@@ -99,13 +99,13 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   installEvent(){
-    this.employeeForm.controls['id'].valueChanges.subscribe(res => {
-      if (this.employeeForm.controls['id'].dirty){
-        console.log('ID have value : ' + this.employeeForm.controls['id'].valid);
-      }
-    })
-    // this.employeeForm.controls['id'].valueChanges.subscribe((id: any) => {
-    //   console.log(id);
-    // });
+  //   this.employeeForm.controls['id'].valueChanges.subscribe(res => {
+  //     if (this.employeeForm.controls['id'].dirty){
+  //       console.log('ID have value : ' + this.employeeForm.controls['id'].valid);
+  //     }
+  //   })
+  //   // this.employeeForm.controls['id'].valueChanges.subscribe((id: any) => {
+  //   //   console.log(id);
+  //   // });
   }
 }
