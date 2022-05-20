@@ -1,3 +1,8 @@
+<div class="row">
+    <div class="col text-center">
+        <button class="btn btn-outline-primary" (click)="addEmployee()">เพิ่มข้อมูล</button>
+    </div>
+</div>
 <table class="table table-bordered">
     <thead class="text-center">
         <tr>
@@ -6,6 +11,7 @@
             <th scope="col">E-Mail</th>
             <th scope="col">Phone</th>
             <th scope="col">Website</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -21,6 +27,7 @@
             <td>{{ emp.email }}</td>
             <td>{{ emp.phone }}</td>
             <td>{{ emp.website }}</td>
+            <td class="text-center"> <button (click)="deleteEmployee(emp.id)" class="btn btn-outline-danger center">Delete</button> </td>
         </tr>
     </tbody>
 </table>

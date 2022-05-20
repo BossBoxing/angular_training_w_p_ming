@@ -41,7 +41,7 @@ export class EmployeeDetailComponent implements OnInit {
     
     if (this.param){
       this.service.findEmployeeById(this.param.id).subscribe((res: any) =>{
-        this.employee = res[0];
+        this.employee = res;
         this.rebuildForm();
         // this.employeeForm.patchValue(this.employee);
       });
@@ -53,7 +53,7 @@ export class EmployeeDetailComponent implements OnInit {
       //this.name.setValue(null);
 
       // 2
-      this.router.navigate(['employee']);
+      //this.router.navigate(['employee']);
       //alert('ไม่มีข้อมูลผู้ใช้');
     }
     //console.log(this.param);

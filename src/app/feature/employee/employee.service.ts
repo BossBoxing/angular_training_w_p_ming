@@ -41,7 +41,11 @@ export class EmployeeService {
   }
 
   findEmployeeById(id: number): any{
-    return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users?id='+ id);
+    return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users/'+ id);
+  }
+
+  deleteEmployeeById(id: number): any{
+    return this.http.delete('https://jsonplaceholder.typicode.com/users/'+ id);
   }
 
 }
