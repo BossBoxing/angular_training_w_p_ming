@@ -3,13 +3,14 @@
 <form [formGroup]="employeeForm">
     <label for="id" style="padding: 10px">ID : </label>
     <input type="text" formControlName="id" class="form-control" 
-        [ngClass]="{ 'is-invalid': this.employeeForm.controls['id'].invalid }"/>
+        [ngClass]="{ 'is-invalid': employeeForm.controls['id'].invalid && employeeForm.controls['id'].dirty}"/>
     <div class="invalid-feedback">
         Please input ID.
     </div>
+    
     <!-- <ng-container class=""> -->
-        <label for="id" style="padding: 10px">ID : </label>
-        <input type="text" formControlName="id" class="form-control" />
+        <!-- <label for="id" style="padding: 10px">ID : </label> -->
+        <!-- <input type="text" formControlName="id" class="form-control" /> -->
     <!-- </ng-container> -->
 
   <label for="username" style="padding: 10px">Username : </label>
