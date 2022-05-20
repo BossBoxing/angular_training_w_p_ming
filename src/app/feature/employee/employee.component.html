@@ -10,7 +10,14 @@
     </thead>
     <tbody>
         <tr *ngFor="let emp of employee; let i = index;">
-            <td class="text-center">{{ emp.id }}</td>
+            <!-- <td class="text-center">{{ emp.id }}</td> -->
+            <td class="text-center">
+                <a routerLink="detail" class="text-decoration-none" 
+                [state]="{ emp }">
+                    
+                    {{ emp.id }}
+                </a>
+            </td>
             <td>{{ emp.name }}</td>
             <td>{{ emp.email }}</td>
             <td>{{ emp.phone }}</td>

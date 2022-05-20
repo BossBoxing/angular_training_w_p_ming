@@ -6,16 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeComponent } from './feature/employee/employee.component';
+import { EmployeeDetailComponent } from './feature/employee/employee-detail/employee-detail.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EmployeeDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [],
