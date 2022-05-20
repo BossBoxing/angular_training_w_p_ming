@@ -1,47 +1,54 @@
-
 <!-- <label for="id" style="padding: 10px;">Name: </label> -->
 <!-- <input type="text" id="name" [formControl]="name" class="form-control"> -->
 <form [formGroup]="employeeForm">
-    <label for="id" style="padding: 10px;">ID : </label>
-    <input type="text" formControlName="id" class="form-control">
-    <label for="username" style="padding: 10px;">Username : </label>
-    <input type="text" formControlName="username" class="form-control">
-    <label for="username" style="padding: 10px;">Name : </label>
-    <input type="text" formControlName="username" class="form-control">
-    <label for="email" style="padding: 10px;">E-mail : </label>
-    <input type="text" formControlName="email" class="form-control">
-    <label for="email" style="padding: 10px;">Phone : </label>
-    <input type="text" formControlName="email" class="form-control">
-    <label for="email" style="padding: 10px;">Website: </label>
-    <input type="text" formControlName="email" class="form-control">
+  <label for="id" style="padding: 10px">ID : </label>
+  <input type="text" formControlName="id" class="form-control" />
+  <label for="username" style="padding: 10px">Username : </label>
+  <input type="text" formControlName="username" class="form-control" />
+  <label for="username" style="padding: 10px">Name : </label>
+  <input type="text" formControlName="username" class="form-control" />
+  <label for="email" style="padding: 10px">E-mail : </label>
+  <input type="text" formControlName="email" class="form-control" />
+  <label for="email" style="padding: 10px">Phone : </label>
+  <input type="text" formControlName="email" class="form-control" />
+  <label for="email" style="padding: 10px">Website: </label>
+  <input type="text" formControlName="email" class="form-control" />
 </form>
-<br>
-<h3>Address</h3>
-<hr>
-<br>
-<form [formGroup]="employeeForm">
-    <label for="id" style="padding: 10px;">Street : </label>
-    <input type="text" formControlName="id" class="form-control">
-    <label for="username" style="padding: 10px;">Suite : </label>
-    <input type="text" formControlName="username" class="form-control">
-    <label for="email" style="padding: 10px;">City: </label>
-    <input type="text" formControlName="email" class="form-control">
-    <label for="email" style="padding: 10px;">Zipcode: </label>
-    <input type="text" formControlName="email" class="form-control">
-</form>
-<br>
-<h3>Company</h3>
-<hr>
-<br>
-<form [formGroup]="employeeForm">
-    <label for="id" style="padding: 10px;">Name : </label>
-    <input type="text" formControlName="id" class="form-control">
-    <label for="username" style="padding: 10px;">CatchPhrase : </label>
-    <input type="text" formControlName="username" class="form-control">
-    <label for="email" style="padding: 10px;">BS: </label>
-    <input type="text" formControlName="email" class="form-control">
-</form>
-<br>
-<button type="button" class="btn btn-primary" (click)="updateName()">Update Name</button>
 
-<p class="text-left">result: {{ result }}</p>
+<br />
+<h3>Address</h3>
+<hr />
+<br />
+
+<form [formGroup]="employeeForm">
+  <label for="id" style="padding: 10px">Street : </label>
+  <input type="text" formControlName="id" class="form-control" />
+  <label for="username" style="padding: 10px">Suite : </label>
+  <input type="text" formControlName="username" class="form-control" />
+  <label for="email" style="padding: 10px">City: </label>
+  <input type="text" formControlName="email" class="form-control" />
+  <label for="email" style="padding: 10px">Zipcode: </label>
+  <input type="text" formControlName="email" class="form-control" />
+</form>
+
+<br />
+<h3>Company</h3>
+<hr />
+<br />
+
+<form [formGroup]="employeeForm">
+  <label for="id" style="padding: 10px">Name : </label>
+  <input type="text" formControlName="id" class="form-control" />
+  <label for="username" style="padding: 10px">CatchPhrase : </label>
+  <input type="text" formControlName="username" class="form-control" />
+  <label for="email" style="padding: 10px">BS: </label>
+  <input type="text" formControlName="email" class="form-control" />
+</form>
+<br />
+
+<button type="button" class="btn btn-primary" (click)="updateName()">
+  Update Name
+</button>
+<br>
+
+<p class="text-left p-5">result: {{ result }}</p>

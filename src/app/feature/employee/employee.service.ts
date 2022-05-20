@@ -40,6 +40,9 @@ export class EmployeeService {
     return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users');
   }
 
+  findEmployeeById(id: number): any{
+    return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users?id='+ id);
+  }
 
 
 }
