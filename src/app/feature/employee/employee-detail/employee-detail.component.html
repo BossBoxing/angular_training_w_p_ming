@@ -1,8 +1,17 @@
 <!-- <label for="id" style="padding: 10px;">Name: </label> -->
 <!-- <input type="text" id="name" [formControl]="name" class="form-control"> -->
 <form [formGroup]="employeeForm">
-  <label for="id" style="padding: 10px">ID : </label>
-  <input type="text" formControlName="id" class="form-control" />
+    <label for="id" style="padding: 10px">ID : </label>
+    <input type="text" formControlName="id" class="form-control" 
+        [ngClass]="{ 'is-invalid': this.employeeForm.controls['id'].invalid }"/>
+    <div class="invalid-feedback">
+        Please input ID.
+    </div>
+    <!-- <ng-container class=""> -->
+        <label for="id" style="padding: 10px">ID : </label>
+        <input type="text" formControlName="id" class="form-control" />
+    <!-- </ng-container> -->
+
   <label for="username" style="padding: 10px">Username : </label>
   <input type="text" formControlName="username" class="form-control" />
   <label for="name" style="padding: 10px">Name : </label>
@@ -21,22 +30,22 @@
 <br />
 
 <form [formGroup]="employeeForm">
-    <ng-container formGroupName="address">
-        <label for="street" style="padding: 10px">Street : </label>
-        <input type="text" formControlName="street" class="form-control" />
-        <label for="suite" style="padding: 10px">Suite : </label>
-        <input type="text" formControlName="suite" class="form-control" />
-        <label for="city" style="padding: 10px">City: </label>
-        <input type="text" formControlName="city" class="form-control" />
-        <label for="zipcode" style="padding: 10px">Zipcode: </label>
-        <input type="text" formControlName="zipcode" class="form-control" />
-        <ng-container formGroupName="geo">
-            <label for="lat" style="padding: 10px">Latitude: </label>
-            <input type="text" formControlName="lat" class="form-control" />
-            <label for="lng" style="padding: 10px">Longtitude: </label>
-            <input type="text" formControlName="lng" class="form-control" />
-        </ng-container>
+  <ng-container formGroupName="address">
+    <label for="street" style="padding: 10px">Street : </label>
+    <input type="text" formControlName="street" class="form-control" />
+    <label for="suite" style="padding: 10px">Suite : </label>
+    <input type="text" formControlName="suite" class="form-control" />
+    <label for="city" style="padding: 10px">City: </label>
+    <input type="text" formControlName="city" class="form-control" />
+    <label for="zipcode" style="padding: 10px">Zipcode: </label>
+    <input type="text" formControlName="zipcode" class="form-control" />
+    <ng-container formGroupName="geo">
+      <label for="lat" style="padding: 10px">Latitude: </label>
+      <input type="text" formControlName="lat" class="form-control" />
+      <label for="lng" style="padding: 10px">Longtitude: </label>
+      <input type="text" formControlName="lng" class="form-control" />
     </ng-container>
+  </ng-container>
 </form>
 
 <br />
@@ -45,20 +54,20 @@
 <br />
 
 <form [formGroup]="employeeForm">
-    <ng-container formGroupName="company">
-        <label for="name" style="padding: 10px">Name : </label>
-        <input type="text" formControlName="name" class="form-control" />
-        <label for="catchPhrase" style="padding: 10px">catchPhrase : </label>
-        <input type="text" formControlName="catchPhrase" class="form-control" />
-        <label for="bs" style="padding: 10px">BS: </label>
-        <input type="text" formControlName="bs" class="form-control" />
-    </ng-container>
+  <ng-container formGroupName="company">
+    <label for="name" style="padding: 10px">Name : </label>
+    <input type="text" formControlName="name" class="form-control" />
+    <label for="catchPhrase" style="padding: 10px">catchPhrase : </label>
+    <input type="text" formControlName="catchPhrase" class="form-control" />
+    <label for="bs" style="padding: 10px">BS: </label>
+    <input type="text" formControlName="bs" class="form-control" />
+  </ng-container>
 </form>
 <br />
 
 <button type="button" class="btn btn-primary" (click)="updateName()">
   Update Name
 </button>
-<br>
+<br />
 
 <p class="text-left p-5">result: {{ result }}</p>

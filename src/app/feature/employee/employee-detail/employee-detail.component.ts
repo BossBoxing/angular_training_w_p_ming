@@ -92,7 +92,7 @@ export class EmployeeDetailComponent implements OnInit {
   rebuildForm(){
     if (this.employee.id) {
       this.employeeForm.patchValue(this.employee);
-      this.employeeForm.controls['id'].disable();
+      //this.employeeForm.controls['id'].disable();
     } else {
       this.employee = {} as Employee;
     }
