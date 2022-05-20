@@ -8,12 +8,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeComponent } from './feature/employee/employee.component';
 import { EmployeeDetailComponent } from './feature/employee/employee-detail/employee-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './feature/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

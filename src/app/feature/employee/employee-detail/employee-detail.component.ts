@@ -1,6 +1,6 @@
 import { Employee, EmployeeService } from './../employee.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -45,6 +45,7 @@ export class EmployeeDetailComponent implements OnInit {
         this.rebuildForm();
         // this.employeeForm.patchValue(this.employee);
       });
+      this.installEvent();
       //this.name.setValue(this.param.username);
     }
     else{
@@ -64,7 +65,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   createForm(){
     this.employeeForm = this.fb.group({
-      id: null,
+      id: [null, Validators.required],
       username: null,
       name: null,
       email: null,
@@ -91,9 +92,20 @@ export class EmployeeDetailComponent implements OnInit {
   rebuildForm(){
     if (this.employee.id) {
       this.employeeForm.patchValue(this.employee);
+      this.employeeForm.controls['id'].disable();
     } else {
       this.employee = {} as Employee;
     }
   }
 
+  installEvent(){
+    this.employeeForm.controls['id'].valueChanges.subscribe(res => {
+      if (this.employeeForm.controls['id'].dirty){
+        console.log('ID have value : ' + this.employeeForm.controls['id'].valid);
+      }
+    })
+    // this.employeeForm.controls['id'].valueChanges.subscribe((id: any) => {
+    //   console.log(id);
+    // });
+  }
 }
