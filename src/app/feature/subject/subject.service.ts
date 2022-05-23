@@ -17,11 +17,11 @@ export class SubjectService {
 
     url: string = 'https://jsonplaceholder.typicode.com/posts/';
 
-    findAllSubject(): any{
-      return this.http.get<Subject>(this.url);
-    }
-
     findSubjectByEmpId(id: number): any{
       return this.http.get<any>(this.url + '?userId=' + id);
+    }
+
+    findAllSubject(): any{
+      return this.http.get<Subject>(this.url);
     }
 }
