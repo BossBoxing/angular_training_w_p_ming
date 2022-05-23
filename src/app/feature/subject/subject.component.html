@@ -19,7 +19,14 @@
             <div class="row">
                 <div class="col-md-9">
                     <!-- <label for="id">ID :</label> -->
-                    <input class="form-control" formControlName="id" type="string" placeholder="Input 1 - 10">
+                    <input class="form-control" formControlName="id" type="string" placeholder="Input 1 - 10"
+                    [ngClass]="{ 'is-invalid': subjectForm.controls['id'].invalid && subjectForm.controls['id'].dirty}" >
+                    <div class="invalid-feedback" *ngIf="subjectForm.controls['id'].errors?.['min']">
+                        กรุณาระบุ ตั้งแต่ 0-10 เท่านั้น
+                    </div>
+                    <div class="invalid-feedback" *ngIf="subjectForm.controls['id'].errors?.['max']">
+                        กรุณาระบุ ตั้งแต่ 0-10 เท่านั้น
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <button type="button" 

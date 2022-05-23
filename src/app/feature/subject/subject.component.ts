@@ -26,13 +26,13 @@ export class SubjectComponent implements OnInit {
 
   createForm(){
     this.subjectForm = this.fb.group({
-      id: null
+      id: [null,[Validators.min(0),Validators.max(10)]]
     });
   }
 
   FetchByEmpId(){
     const id = this.subjectForm.controls['id'].value;
-    if(id){
+    if(id && id >= 0 && id <= 10){
       this.service.findSubjectByEmpId(id).subscribe((response: Subject) => {
         this.subject = response;
         console.log(this.subject)
