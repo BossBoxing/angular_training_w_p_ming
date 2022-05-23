@@ -76,18 +76,25 @@ export class SubjectComponent implements OnInit {
 
   save(){
     if( this.subject.length > 0){
-      const array: any = [];
+      //const array: any = [];
       this.subject.forEach((row: Subject) => {
         //const array = [];
         if ( row.form.controls['title'].dirty || row.form.controls['body'].dirty){
           //array.push(row.id);
           //array.push
-          array.push(row.form.getRawValue());
+          this.service.saveSubject(row.form.getRawValue()).subscribe();
+          console.log(row.form.getRawValue());
+          //array.push(row.form.getRawValue());
           //console.log(row.id);
+          row.form.markAsPristine(); // set for no dirty
         }
         
       });
-      console.log(array);
+      alert('save success!');
+      //console.log(array);
+      /*this.subject.forEach((row: Subject) => {
+        this.service.saveSubject(array);
+      });*/
     }
     //console.log(this.subjectForm.controls['title'].dirty);
   }

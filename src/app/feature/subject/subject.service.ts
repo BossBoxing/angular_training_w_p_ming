@@ -26,4 +26,8 @@ export class SubjectService {
     findAllSubject(): any{
       return this.http.get<Subject>(this.url);
     }
+
+    saveSubject(subject: Subject): any{
+        return this.http.put<Subject>(this.url + subject.id, subject);
+    }
 }
