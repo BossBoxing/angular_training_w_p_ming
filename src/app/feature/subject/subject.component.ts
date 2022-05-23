@@ -99,6 +99,18 @@ export class SubjectComponent implements OnInit {
     //console.log(this.subjectForm.controls['title'].dirty);
   }
 
+  deleteSubject(id: number){
+    // request api data
+    this.service.deleteSubjectById(id).subscribe();
+
+    // this.employee.forEach((row: any,index: number) => {
+    //   console.log(index);
+    // });
+    this.subject = this.subject.filter((subject: any) => subject.id !== id);
+    this.rebuildForm();
+    // console.log(this.employee[0].id);
+  }
+
   // rebuildForm(){
   //   if (this.subject.id) {
   //     this.subject.patchValue(this.subject);

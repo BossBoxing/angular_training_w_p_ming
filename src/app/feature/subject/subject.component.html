@@ -78,7 +78,13 @@
                                 <input type="text" class="form-control border" formControlName="body"
                                 [ngClass]="{ 'border border-warning' : row.form.controls['body'].dirty }">
                             </td>
-                            <td class="text-center"> <button class="btn btn-outline-danger center">Delete</button> </td>
+                            <td class="text-center"> 
+                                <button class="btn btn-outline-danger center"
+                                (click)="deleteSubject(row.id)">
+                                    Delete
+
+                                </button> 
+                            </td>
                         </ng-container>
                         
                     <!-- </ng-container> -->

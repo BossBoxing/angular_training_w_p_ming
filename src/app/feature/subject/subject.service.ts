@@ -30,4 +30,8 @@ export class SubjectService {
     saveSubject(subject: Subject): any{
         return this.http.put<Subject>(this.url + subject.id, subject);
     }
+
+    deleteSubjectById(id: number): any{
+      return this.http.delete(this.url+ id);
+    }
 }
