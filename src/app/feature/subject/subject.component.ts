@@ -50,6 +50,11 @@ export class SubjectComponent implements OnInit {
     }
   }
 
+  clear(){
+    this.searchForm.reset();
+    this.subject = [];
+  }
+
   rebuildForm(){
     if( this.subject.length > 0){
       this.subject.forEach((row: Subject) => row.form = this.createSubjectForm(row));
