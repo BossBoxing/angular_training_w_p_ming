@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-md-3">
                     <button type="button" 
-                    class="btn btn-outline-success"
+                    class="btn btn-outline-primary"
                     (click)="FetchByEmpId()"
                     >Search</button>
                     <button type="button" 
@@ -42,7 +42,11 @@
         </form>
     </div>
 </div>
-
+<div class="row">
+    <div class="col text-end">
+        <button type="button" class="btn btn-outline-success" (click)="save()">Save</button>
+    </div>
+</div>
 <div class="row">
     <div class="col">
         <table class="table table-bordered">
@@ -63,14 +67,16 @@
                                 {{ post.id }}  
                             </td> -->
                             <td class="text-center"> {{ row.id }} </td>
-                            <td>
+                            <td class="col-1">
                                 <input type="text" class="form-control border text-center" formControlName="userId">
                             </td>
                             <td>
-                                <input type="text" class="form-control border" formControlName="title">
+                                <input type="text" class="form-control border" formControlName="title"
+                                [ngClass]="{ 'border border-warning' : row.form.controls['title'].dirty }">
                             </td>
                             <td>
-                                <input type="text" class="form-control border" formControlName="body">
+                                <input type="text" class="form-control border" formControlName="body"
+                                [ngClass]="{ 'border border-warning' : row.form.controls['body'].dirty }">
                             </td>
                             <td class="text-center"> <button class="btn btn-outline-danger center">Delete</button> </td>
                         </ng-container>

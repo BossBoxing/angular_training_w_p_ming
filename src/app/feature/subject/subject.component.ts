@@ -1,6 +1,7 @@
 import { Subject, SubjectService } from './subject.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { rootCertificates } from 'tls';
 
 @Component({
   selector: 'app-subject',
@@ -63,6 +64,7 @@ export class SubjectComponent implements OnInit {
 
   createSubjectForm(subject: Subject){
     const fg = this.fb.group({
+      id:null,
       userId:null,
       title:null,
       body:null
@@ -70,6 +72,24 @@ export class SubjectComponent implements OnInit {
     fg.patchValue(subject);
     fg.controls['userId'].disable();
     return fg;
+  }
+
+  save(){
+    if( this.subject.length > 0){
+      const array: any = [];
+      this.subject.forEach((row: Subject) => {
+        //const array = [];
+        if ( row.form.controls['title'].dirty || row.form.controls['body'].dirty){
+          //array.push(row.id);
+          //array.push
+          array.push(row.form.getRawValue());
+          //console.log(row.id);
+        }
+        
+      });
+      console.log(array);
+    }
+    //console.log(this.subjectForm.controls['title'].dirty);
   }
 
   // rebuildForm(){
