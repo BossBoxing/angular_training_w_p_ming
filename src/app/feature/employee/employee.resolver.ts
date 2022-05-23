@@ -20,9 +20,9 @@ export class EmployeeResolver implements Resolve<boolean> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
     const param: any = this.router.getCurrentNavigation()?.extras.state;
     const EmpDatail = (param && param.id) ? 
-      this.empService.findEmployeeById(param.id).subscribe() : of({} as Employee)
+      this.empService.findEmployeeById(param.id) : of({} as Employee)
     const SubjDatail = (param && param.id) ? 
-      this.subjService.findSubjectByEmpId(param.id).subscribe() : of({} as Subject)
+      this.subjService.findSubjectByEmpId(param.id) : of({} as Subject)
     return forkJoin([EmpDatail,SubjDatail]).pipe(map((result: any) => {
       const empDetail = result[0];
       const subjDetail = result[1];

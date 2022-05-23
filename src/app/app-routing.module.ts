@@ -8,7 +8,10 @@ import { EmployeeComponent } from './feature/employee/employee.component';
 
 const routes: Routes = [
   {path:'employee',component: EmployeeComponent},
-  {path:'employee/detail',component: EmployeeDetailComponent},
+  {path:'employee/detail',
+  component: EmployeeDetailComponent,
+  resolve: { employee: EmployeeResolver}
+  },
   {path:'',component: HomeComponent},
   {path:'subject',component: SubjectComponent}
 ];

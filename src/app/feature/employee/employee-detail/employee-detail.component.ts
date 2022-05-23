@@ -2,7 +2,7 @@ import { Subject, SubjectService } from './../../subject/subject.service';
 import { Employee, EmployeeService } from './../employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-employee-detail',
@@ -10,67 +10,31 @@ import { Router } from '@angular/router';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit {
-
-  // param: any = this.router.getCurrentNavigation()?.extras.state;
-
-  //name = new FormControl('');
-
   employee: Employee = {} as Employee;
   employeeForm!: FormGroup;
   subjects: Subject = {} as Subject;
-  
-
-  // employeeForm = new FormGroup({
-  //   id: new FormControl(''),
-  //   username: new FormControl(''),
-  //   name: new FormControl(''),
-  //   email: new FormControl(''),
-  //   phone: new FormControl(''),
-  //   website: new FormControl(''),
-  // });
 
   result?: string;
-  //result: string = "";
 
   constructor(
-    private router: Router,
+    // private router: Router,
     private service: EmployeeService,
     private fb: FormBuilder,
-    private subjService: SubjectService
+    private route: ActivatedRoute
     ) {}
 
   ngOnInit(): void {
     this.createForm();
-    console.log(this.param);
-    
-    if (this.param){
-      this.service.findEmployeeById(this.param.id).subscribe((res: any) =>{
-        this.employee = res;
-        this.subjService.findSubjectByEmpId(this.param.id)
-          .subscribe((subjResponse: any) =>{
-            this.rebuildForm();
-            this.subjects = subjResponse;
-            console.log(this.subjects);
-          });
-        // this.employeeForm.patchValue(this.employee);
-      });
-      this.installEvent();
-      //this.name.setValue(this.param.username);
-    }
-    else{
-      // 1
-      //this.name.setValue(null);
-
-      // 2
-      //this.router.navigate(['employee']);
-      //alert('ไม่มีข้อมูลผู้ใช้');
-    }
-    //console.log(this.param);
+    this.route.data.subscribe((result: any) => {
+      this.employee = result.employee.empDetail;
+      this.subjects = result.employee.subjDetail;
+      this.rebuildForm();
+    });
+    this.installEvent();
   }
 
   save(){
     this.service.saveEmployee(this.employeeForm.getRawValue()).subscribe(() => {
-      // console.log('save success');
       alert('save success!');
     });
   }
@@ -106,22 +70,13 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.employee.id) {
       this.employeeForm.patchValue(this.employee);
       this.employeeForm.controls['id'].disable();
-      this.employeeForm.controls['rowVersion'].setValue(this.employee.id);//this.employee.rowVersion = this.employee.id;
-      //console.log(this.employee.rowVersion);
-      //this.employeeForm.controls['id'].disable();
+      this.employeeForm.controls['rowVersion'].setValue(this.employee.id);
     } else {
       this.employee = {} as Employee;
     }
   }
 
   installEvent(){
-  //   this.employeeForm.controls['id'].valueChanges.subscribe(res => {
-  //     if (this.employeeForm.controls['id'].dirty){
-  //       console.log('ID have value : ' + this.employeeForm.controls['id'].valid);
-  //     }
-  //   })
-  //   // this.employeeForm.controls['id'].valueChanges.subscribe((id: any) => {
-  //   //   console.log(id);
-  //   // });
+
   }
 }
