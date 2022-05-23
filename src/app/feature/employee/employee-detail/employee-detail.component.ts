@@ -1,3 +1,4 @@
+import { Subject, SubjectService } from './../../subject/subject.service';
 import { Employee, EmployeeService } from './../employee.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -10,12 +11,14 @@ import { Router } from '@angular/router';
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  param: any = this.router.getCurrentNavigation()?.extras.state;
+  // param: any = this.router.getCurrentNavigation()?.extras.state;
 
   //name = new FormControl('');
 
   employee: Employee = {} as Employee;
   employeeForm!: FormGroup;
+  subjects: Subject = {} as Subject;
+  
 
   // employeeForm = new FormGroup({
   //   id: new FormControl(''),
@@ -32,7 +35,8 @@ export class EmployeeDetailComponent implements OnInit {
   constructor(
     private router: Router,
     private service: EmployeeService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private subjService: SubjectService
     ) {}
 
   ngOnInit(): void {
@@ -42,7 +46,12 @@ export class EmployeeDetailComponent implements OnInit {
     if (this.param){
       this.service.findEmployeeById(this.param.id).subscribe((res: any) =>{
         this.employee = res;
-        this.rebuildForm();
+        this.subjService.findSubjectByEmpId(this.param.id)
+          .subscribe((subjResponse: any) =>{
+            this.rebuildForm();
+            this.subjects = subjResponse;
+            console.log(this.subjects);
+          });
         // this.employeeForm.patchValue(this.employee);
       });
       this.installEvent();
@@ -88,13 +97,17 @@ export class EmployeeDetailComponent implements OnInit {
         name: null,
         catchPhrase: null,
         bs: null
-      })
+      }),
+       rowVersion: null
     });
   }
 
   rebuildForm(){
     if (this.employee.id) {
       this.employeeForm.patchValue(this.employee);
+      this.employeeForm.controls['id'].disable();
+      this.employeeForm.controls['rowVersion'].setValue(this.employee.id);//this.employee.rowVersion = this.employee.id;
+      //console.log(this.employee.rowVersion);
       //this.employeeForm.controls['id'].disable();
     } else {
       this.employee = {} as Employee;

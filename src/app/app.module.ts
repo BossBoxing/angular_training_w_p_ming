@@ -1,3 +1,5 @@
+import { SubjectService } from './feature/subject/subject.service';
+import { EmployeeService } from './feature/employee/employee.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -9,13 +11,15 @@ import { EmployeeComponent } from './feature/employee/employee.component';
 import { EmployeeDetailComponent } from './feature/employee/employee-detail/employee-detail.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './feature/home/home.component';
+import { SubjectComponent } from './feature/subject/subject.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     EmployeeDetailComponent,
-    HomeComponent
+    HomeComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,7 @@ import { HomeComponent } from './feature/home/home.component';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [EmployeeService,SubjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

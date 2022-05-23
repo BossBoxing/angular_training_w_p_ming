@@ -2,7 +2,7 @@
 <!-- <input type="text" id="name" [formControl]="name" class="form-control"> -->
 <form [formGroup]="employeeForm">
     <!-- ID -->
-    <label for="id" style="padding: 10px">ID : </label>
+    <label for="id" style="padding: 10px">ID<span class="text-danger"> *</span> :  </label>
     <input type="text" formControlName="id" class="form-control"
         [ngClass]="{ 'is-invalid': employeeForm.controls['id'].invalid && employeeForm.controls['id'].dirty}" />
     <div class="invalid-feedback" *ngIf="employeeForm.controls['id'].errors?.['required']">
@@ -15,7 +15,7 @@
         กรุณาระบุจำนวนน้อยกว่า 500
     </div>
     <!-- Username -->
-    <label for="username" style="padding: 10px">Username : </label>
+    <label for="username" style="padding: 10px">Username<span class="text-danger"> *</span> : </label>
     <input type="text" formControlName="username" class="form-control"
         [ngClass]="{ 'is-invalid': employeeForm.controls['username'].invalid && employeeForm.controls['username'].dirty}" />
     <div class="invalid-feedback" *ngIf="employeeForm.controls['username'].errors?.['required']">
@@ -25,7 +25,7 @@
         กรุณาระบุอักขระน้อยกว่า 30 ตัว
     </div>
     <!-- Name -->
-    <label for="name" style="padding: 10px">Name : </label>
+    <label for="name" style="padding: 10px">Name<span class="text-danger"> *</span> : </label>
     <input type="text" formControlName="name" class="form-control"
         [ngClass]="{ 'is-invalid': employeeForm.controls['name'].invalid && employeeForm.controls['name'].dirty}" />
     <div class="invalid-feedback" *ngIf="employeeForm.controls['name'].errors?.['required']">

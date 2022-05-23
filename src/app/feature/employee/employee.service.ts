@@ -10,6 +10,7 @@ export interface Employee{
   website: string;
   address: Address;
   company: Company;
+  rowVersion: number;
 }
 
 export interface Address{
@@ -33,24 +34,30 @@ export interface Company{
   providedIn: 'root'
 })
 export class EmployeeService {
-
+  
   constructor(private http: HttpClient) { }
+  url: string = 'https://jsonplaceholder.typicode.com/users/';
 
   findAllEmployee(): any{
-    return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users');
+    return this.http.get<Employee>(this.url);
   }
 
   findEmployeeById(id: number): any{
-    return this.http.get<Employee>('https://jsonplaceholder.typicode.com/users/'+ id);
+    return this.http.get<Employee>(this.url+ id);
   }
 
   deleteEmployeeById(id: number): any{
-    return this.http.delete('https://jsonplaceholder.typicode.com/users/'+ id);
+    return this.http.delete(this.url+ id);
   }
 
   saveEmployee(employee: Employee): any{
-    return this.http.put<Employee>('https://jsonplaceholder.typicode.com/users/' + employee.id
+    if (employee.rowVersion){
+      return this.http.put<Employee>(this.url + employee.id
     , employee );
+    } else{
+      return this.http.post<Employee>(this.url
+    , employee );
+    }
   }
 
 }
