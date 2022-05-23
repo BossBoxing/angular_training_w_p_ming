@@ -15,17 +15,17 @@
 
 <div class="row p-5">
     <div class="col">
-        <form [formGroup]="subjectForm">
+        <form [formGroup]="searchForm">
             <div class="row">
                 <div class="col-md-9">
                     <!-- <label for="id">ID :</label> -->
-                    <input class="form-control" formControlName="id" type="string" placeholder="Input 1 - 10"
-                    [ngClass]="{ 'is-invalid': subjectForm.controls['id'].invalid && subjectForm.controls['id'].dirty}" >
-                    <div class="invalid-feedback" *ngIf="subjectForm.controls['id'].errors?.['min']">
-                        กรุณาระบุ ตั้งแต่ 0-10 เท่านั้น
+                    <input class="form-control" formControlName="id" type="number" placeholder="Input 1 - 10"
+                    [ngClass]="{ 'is-invalid': searchForm.controls['id'].invalid && searchForm.controls['id'].dirty}" >
+                    <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['min']">
+                        กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
                     </div>
-                    <div class="invalid-feedback" *ngIf="subjectForm.controls['id'].errors?.['max']">
-                        กรุณาระบุ ตั้งแต่ 0-10 เท่านั้น
+                    <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['max']">
+                        กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -45,20 +45,32 @@
             <thead class="text-center">
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">User ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Body</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let post of subject; let i = index;">
+                <tr *ngFor="let row of subject">
                     <!-- <ng-container *ngIf="post.id"> -->
-                        <td class="text-center">
-                            {{ post.id }}  
-                        </td>
-                        <td>{{ post.title }}</td>
-                        <td>{{ post.body }}</td>
-                        <td class="text-center"> <button class="btn btn-outline-danger center">Delete</button> </td>
+                        <ng-container [formGroup]="row.form">
+                            <!-- <td class="text-center">
+                                {{ post.id }}  
+                            </td> -->
+                            <td class="text-center"> {{ row.id }} </td>
+                            <td>
+                                <input type="text" class="form-control border text-center" formControlName="userId">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border" formControlName="title">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control border" formControlName="body">
+                            </td>
+                            <td class="text-center"> <button class="btn btn-outline-danger center">Delete</button> </td>
+                        </ng-container>
+                        
                     <!-- </ng-container> -->
                     
                     <!-- <td class="text-center">{{ emp.id }}</td> -->

@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -6,6 +7,7 @@ export interface Subject{
   id: number;
   title: string;
   body: string;
+  form: FormGroup;
 };
 
 @Injectable({
