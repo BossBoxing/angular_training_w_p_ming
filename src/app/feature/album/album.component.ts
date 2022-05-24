@@ -50,4 +50,11 @@ export class AlbumComponent implements OnInit {
     this.album = [];
   }
 
+  deleteAlbum(id: number){
+    // request api data
+    this.service.deleteAlbumById(id).subscribe();
+
+    this.album = this.album.filter((album: any) => album.id !== id);
+  }
+
 }

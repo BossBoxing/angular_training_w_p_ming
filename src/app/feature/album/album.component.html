@@ -62,7 +62,8 @@
                         {{ e.title }}
                     </td>
                     <td class="text-center">
-                        <button class="btn btn-outline-danger center">
+                        <button class="btn btn-outline-danger center"
+                        (click)="deleteAlbum(e.id)">
                             Delete
 
                         </button>

@@ -22,4 +22,8 @@ export class AlbumService {
   findAlbumByEmpId(id: number): any{
     return this.http.get<any>(this.url + '?userId=' + id);
   }
+
+  deleteAlbumById(id: number): any{
+    return this.http.delete(this.url+ id);
+  }
 }
