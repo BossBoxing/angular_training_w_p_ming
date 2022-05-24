@@ -1,0 +1,74 @@
+<!-- <div class="row">
+    <div class="col-md-4" *ngFor="let post of subject; let i = index;">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{ post.title }}</h5>
+                <p class="card-text text-muted" style="font-size:14px"> User ID : {{ post.userId}} </p>
+                <p class="card-text"> {{ post.body}} </p>
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="row ">
+    <h1 class="text-center text-primary"> Albums </h1>
+</div>
+
+<div class="row p-5">
+    <div class="col">
+        <form [formGroup]="searchForm">
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- <label for="id">ID :</label> -->
+                    <input class="form-control" formControlName="id" type="number" placeholder="Input 1 - 100"
+                        [ngClass]="{ 'is-invalid': searchForm.controls['id'].invalid && searchForm.controls['id'].dirty}">
+                    <!-- <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['min']">
+                        กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
+                    </div>
+                    <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['max']">
+                        กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
+                    </div> -->
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-outline-primary" (click)="FetchByEmpId()">Search</button>
+                    <button type="button" class="btn btn-outline-danger ms-3" (click)="clear()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-bordered">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let e of album">
+                    <td class="text-center"> 
+                        <a routerLink="/photo" class="text-decoration-none"
+                            [state]="{albumId: e.id}">
+                            {{ e.id }}
+                        </a> 
+                    </td>
+                    <td class="col-1">
+                        {{ e.userId }}
+                    </td>
+                    <td>
+                        {{ e.title }}
+                    </td>
+                    <td class="text-center">
+                        <button class="btn btn-outline-danger center">
+                            Delete
+
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

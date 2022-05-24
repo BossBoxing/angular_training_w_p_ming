@@ -12,6 +12,8 @@ import { EmployeeDetailComponent } from './feature/employee/employee-detail/empl
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './feature/home/home.component';
 import { SubjectComponent } from './feature/subject/subject.component';
+import { PhotoComponent } from './feature/photo/photo.component';
+import { AlbumComponent } from './feature/album/album.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { SubjectComponent } from './feature/subject/subject.component';
     EmployeeComponent,
     EmployeeDetailComponent,
     HomeComponent,
-    SubjectComponent
+    SubjectComponent,
+    PhotoComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,

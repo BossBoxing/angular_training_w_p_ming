@@ -1,0 +1,45 @@
+<!-- <div class="row">
+    <div class="col-md-4" *ngFor="let post of subject; let i = index;">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{ post.title }}</h5>
+                <p class="card-text text-muted" style="font-size:14px"> User ID : {{ post.userId}} </p>
+                <p class="card-text"> {{ post.body}} </p>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<h3>Album Detail</h3>
+<hr>
+<div class="row p-2">
+    <div class="col-md-2">
+        <label for="ID">ID :</label>
+        <input class="form-control" type="text">
+    </div>
+    <div class="col-md-2">
+        <label for="ID">User ID :</label>
+        <input class="form-control" type="text">
+    </div>
+    <div class="col-md-8">
+        <label for="ID">Title :</label>
+        <input class="form-control" type="text">
+    </div>
+</div>
+
+<div class="row pl-2 pt-5">
+
+    <h3>Photos</h3>
+    <hr>
+    
+    <div class="col-md-4 p-5" *ngFor="let p of photo;">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ p.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"> {{ p.id }} </h5>
+              <p class="card-text">{{ p.title }}</p>
+              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+          </div>
+    </div>
+</div>
