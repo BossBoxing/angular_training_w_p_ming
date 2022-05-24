@@ -26,6 +26,9 @@
             <label for="ID">Title :</label>
             <input class="form-control" formControlName="title" type="text">
         </div>
+        <div class="col pt-4">
+            <button class="btn btn-outline-success" type="button" (click)="save()">Save</button>
+        </div>
     </ng-container>
 </div>
 
@@ -47,6 +50,7 @@
                     <input type="text" class="form-control" formControlName="title">
                     <!-- <p class="card-text">{{ p.title }}</p> -->
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    <button class="btn btn-outline-success mt-4" type="button">Save</button>
                 </div>
             </div>
         </ng-container>

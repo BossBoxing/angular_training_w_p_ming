@@ -26,4 +26,8 @@ export class AlbumService {
   deleteAlbumById(id: number): any{
     return this.http.delete(this.url+ id);
   }
+
+  saveAlbum(album: Album): any{
+    return this.http.put<Album>(this.url + album.id, album);
+  }
 }

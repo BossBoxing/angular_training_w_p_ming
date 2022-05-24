@@ -19,14 +19,14 @@
             <div class="row">
                 <div class="col-md-8">
                     <!-- <label for="id">ID :</label> -->
-                    <input class="form-control" formControlName="id" type="number" placeholder="Input 1 - 100"
+                    <input class="form-control" formControlName="id" type="number" placeholder="Input 1 - 10"
                         [ngClass]="{ 'is-invalid': searchForm.controls['id'].invalid && searchForm.controls['id'].dirty}">
-                    <!-- <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['min']">
+                    <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['min']">
                         กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
                     </div>
                     <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['max']">
                         กรุณาระบุ ตั้งแต่ 1-10 เท่านั้น
-                    </div> -->
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <button type="button" class="btn btn-outline-primary" (click)="FetchByEmpId()">Search</button>
@@ -41,7 +41,7 @@
         <table class="table table-bordered">
             <thead class="text-center">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">Album ID</th>
                     <th scope="col">User ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Delete</th>
@@ -55,7 +55,7 @@
                             {{ e.id }}
                         </a> 
                     </td>
-                    <td class="col-1">
+                    <td class="col-1 text-center">
                         {{ e.userId }}
                     </td>
                     <td>

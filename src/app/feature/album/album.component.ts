@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Album, AlbumService } from './album.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -26,7 +26,7 @@ export class AlbumComponent implements OnInit {
 
   createForm(){
     this.searchForm = this.fb.group({
-      id: null
+      id: [null,[Validators.min(1),Validators.max(10)]]
     });
   }
 

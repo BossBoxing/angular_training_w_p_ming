@@ -1,3 +1,4 @@
+import { Album, AlbumService } from './../album/album.service';
 import { Photo, PhotoService } from './photo.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -16,9 +17,11 @@ export class PhotoComponent implements OnInit {
   photo: any =[];
   AlbumForm!: FormGroup;
   CardPhotoForm!: FormGroup;
+  album!: Album;
   
   constructor(
       private service: PhotoService,
+      private service_Album: AlbumService,
       private fb: FormBuilder,
       private router:Router
     ) { }
@@ -31,7 +34,7 @@ export class PhotoComponent implements OnInit {
         this.rebuildForm();
       });
     this.setAlbumForm();
-    console.log(this.param);
+    //console.log(this.param);
   }
 
   createAlbumForm(){
@@ -48,6 +51,7 @@ export class PhotoComponent implements OnInit {
     this.AlbumForm.controls['title'].setValue(this.param.title);
     
     this.AlbumForm.controls['albumId'].disable();
+    this.AlbumForm.controls['userId'].disable();
   }
 
   rebuildForm(){
@@ -66,6 +70,22 @@ export class PhotoComponent implements OnInit {
     fg.patchValue(photo);
     fg.controls['id'].disable();
     return fg;
+  }
+
+  save(){
+    //console.log('1');
+    if(this.AlbumForm.controls['title'].dirty){
+
+      this.album = {
+        id : this.param.albumId,
+        userId : this.param.userId,
+        title : this.AlbumForm.controls['title'].value
+      };
+
+      //console.log(this.album);
+      this.service_Album.saveAlbum(this.album).subscribe();
+      alert("save album detail success!");
+    }
   }
 
 }
