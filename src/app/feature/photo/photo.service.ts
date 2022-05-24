@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -7,6 +8,7 @@ export interface Photo{
   title:string;
   url:string;
   thumbnailUrl:string;
+  form:FormGroup;
 }
 
 @Injectable({

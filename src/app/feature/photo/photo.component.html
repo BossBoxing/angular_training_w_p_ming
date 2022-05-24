@@ -13,33 +13,42 @@
 <h3>Album Detail</h3>
 <hr>
 <div class="row p-2">
-    <div class="col-md-2">
-        <label for="ID">ID :</label>
-        <input class="form-control" type="text">
-    </div>
-    <div class="col-md-2">
-        <label for="ID">User ID :</label>
-        <input class="form-control" type="text">
-    </div>
-    <div class="col-md-8">
-        <label for="ID">Title :</label>
-        <input class="form-control" type="text">
-    </div>
+    <ng-container [formGroup]="AlbumForm">
+        <div class="col-md-2">
+            <label for="ID">ID :</label>
+            <input class="form-control" formControlName="albumId" type="number">
+        </div>
+        <div class="col-md-2">
+            <label for="ID">User ID :</label>
+            <input class="form-control" formControlName="userId" type="number">
+        </div>
+        <div class="col-md-4">
+            <label for="ID">Title :</label>
+            <input class="form-control" formControlName="title" type="text">
+        </div>
+    </ng-container>
 </div>
 
 <div class="row pl-2 pt-5">
 
     <h3>Photos</h3>
     <hr>
-    
-    <div class="col-md-4 p-5" *ngFor="let p of photo;">
-        <div class="card" style="width: 18rem;">
-            <img src="{{ p.url }}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"> {{ p.id }} </h5>
-              <p class="card-text">{{ p.title }}</p>
-              <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+
+    <div class="col-md-4 p-5" *ngFor="let row of photo;">
+        <ng-container [formGroup]="row.form">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ row.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <label for="id">Photo ID :</label>
+                    <input type="text" class="form-control" formControlName="id">
+                    <!-- <h5 class="card-title"> {{ p.id }} </h5> -->
+                    <label for="id">Title :</label>
+                    <input type="text" class="form-control" formControlName="title">
+                    <!-- <p class="card-text">{{ p.title }}</p> -->
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                </div>
             </div>
-          </div>
+        </ng-container>
     </div>
 </div>

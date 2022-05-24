@@ -51,7 +51,7 @@
                 <tr *ngFor="let e of album">
                     <td class="text-center"> 
                         <a routerLink="/photo" class="text-decoration-none"
-                            [state]="{albumId: e.id}">
+                            [state]="{ albumId:e.id, userId:e.userId, title:e.title }">
                             {{ e.id }}
                         </a> 
                     </td>
