@@ -56,11 +56,11 @@ export class PhotoComponent implements OnInit {
 
   rebuildForm(){
     if( this.photo.length > 0){
-      this.photo.forEach((row: Photo) => row.form = this.createSubjectForm(row));
+      this.photo.forEach((row: Photo) => row.form = this.createPhotoForm(row));
     }
   }
 
-  createSubjectForm(photo: Photo){
+  createPhotoForm(photo: Photo){
     const fg = this.fb.group({
       id:null,
       albumId:null,
@@ -75,17 +75,25 @@ export class PhotoComponent implements OnInit {
   save(){
     //console.log('1');
     if(this.AlbumForm.controls['title'].dirty){
-
       this.album = {
         id : this.param.albumId,
         userId : this.param.userId,
         title : this.AlbumForm.controls['title'].value
       };
-
-      //console.log(this.album);
       this.service_Album.saveAlbum(this.album).subscribe();
-      alert("save album detail success!");
+      this.AlbumForm.controls['title'].markAsPristine();
     }
+    
+    if (this.photo.length > 0){
+      this.photo.forEach((row: Photo) => {
+        if(row.form.controls['title'].dirty){
+          this.service.savePhoto(row.form.getRawValue()).subscribe();
+          console.log(row.form.getRawValue());
+          row.form.controls['title'].markAsPristine();
+        }
+      });
+    }
+    alert('save success!');
   }
 
 }

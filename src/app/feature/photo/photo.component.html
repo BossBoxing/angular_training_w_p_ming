@@ -24,7 +24,8 @@
         </div>
         <div class="col-md-4">
             <label for="ID">Title :</label>
-            <input class="form-control" formControlName="title" type="text">
+            <input class="form-control" formControlName="title" type="text"
+            [ngClass]="{ 'border border-warning': AlbumForm.controls['title'].dirty}">
         </div>
         <div class="col pt-4">
             <button class="btn btn-outline-success" type="button" (click)="save()">Save</button>
@@ -47,10 +48,11 @@
                     <input type="text" class="form-control" formControlName="id">
                     <!-- <h5 class="card-title"> {{ p.id }} </h5> -->
                     <label for="id">Title :</label>
-                    <input type="text" class="form-control" formControlName="title">
+                    <input type="text" class="form-control" formControlName="title"
+                    [ngClass]="{ 'border border-warning': row.form.controls['title'].dirty}">
                     <!-- <p class="card-text">{{ p.title }}</p> -->
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                    <button class="btn btn-outline-success mt-4" type="button">Save</button>
+                    <!-- <button class="btn btn-outline-success mt-4" type="button">Save</button> -->
                 </div>
             </div>
         </ng-container>

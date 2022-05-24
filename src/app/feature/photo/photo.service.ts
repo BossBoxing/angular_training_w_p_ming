@@ -27,4 +27,8 @@ export class PhotoService {
   findPhotoByAlbumId(id: number): any{
     return this.http.get<any>(this.url + '?albumId=' + id);
   }
+
+  savePhoto(photo: Photo): any{
+    return this.http.put<Photo>(this.url + photo.id, photo);
+  }
 }
