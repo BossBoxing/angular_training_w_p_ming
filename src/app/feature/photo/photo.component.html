@@ -28,7 +28,7 @@
             [ngClass]="{ 'border border-warning': AlbumForm.controls['title'].dirty}">
         </div>
         <div class="col pt-4">
-            <button class="btn btn-outline-success" type="button" (click)="save()">Save</button>
+            <button class="btn btn-outline-success" type="button" (click)="save()">Save All</button>
         </div>
     </ng-container>
 </div>
@@ -39,17 +39,18 @@
     <hr>
 
 
-    <div class="col-md-4 p-5" *ngFor="let row of photo;">
+    <div class="col-md-6 col-lg-4 p-5" *ngFor="let row of photo;">
         <ng-container [formGroup]="row.form">
             <div class="card" style="width: 18rem;">
+                <h6 class="card-header"> ID : {{ row.id }} </h6>
                 <img src="{{ row.url }}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <label for="id">Photo ID :</label>
-                    <input type="text" class="form-control" formControlName="id">
+                    <!-- <label for="id" class="p-2">Photo ID :</label> -->
+                    <!-- <input type="text" class="form-control p-2 text-center" formControlName="id"> -->
                     <!-- <h5 class="card-title"> {{ p.id }} </h5> -->
-                    <label for="id">Title :</label>
-                    <input type="text" class="form-control" formControlName="title"
-                    [ngClass]="{ 'border border-warning': row.form.controls['title'].dirty}">
+                    <label for="id" class="p-2">Title</label>
+                    <textarea type="text" class="form-control form-control-sm pb-4" formControlName="title"
+                    [ngClass]="{ 'border border-warning': row.form.controls['title'].dirty}"></textarea>
                     <!-- <p class="card-text">{{ p.title }}</p> -->
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                     <!-- <button class="btn btn-outline-success mt-4" type="button">Save</button> -->

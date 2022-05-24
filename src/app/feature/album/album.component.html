@@ -17,8 +17,10 @@
     <div class="col">
         <form [formGroup]="searchForm">
             <div class="row">
+                <div class="col-md-1 p-2">
+                    <span>User ID :</span>
+                </div>
                 <div class="col-md-8">
-                    <!-- <label for="id">ID :</label> -->
                     <input class="form-control" formControlName="id" type="number" placeholder="Input 1 - 10"
                         [ngClass]="{ 'is-invalid': searchForm.controls['id'].invalid && searchForm.controls['id'].dirty}">
                     <div class="invalid-feedback" *ngIf="searchForm.controls['id'].errors?.['min']">
@@ -52,20 +54,19 @@
                     <td class="text-center"> 
                         <a routerLink="/photo" class="text-decoration-none"
                             [state]="{ albumId:e.id, userId:e.userId, title:e.title }">
-                            {{ e.id }}
+                            <button class="btn btn-outline-primary p-3"> {{ e.id }} </button>
                         </a> 
                     </td>
-                    <td class="col-1 text-center">
+                    <td class="col-1 text-center align-middle">
                         {{ e.userId }}
                     </td>
                     <td>
                         {{ e.title }}
                     </td>
-                    <td class="text-center">
-                        <button class="btn btn-outline-danger center"
+                    <td class="text-center align-middle">
+                        <button class="btn btn-outline-danger"
                         (click)="deleteAlbum(e.id)">
-                            Delete
-
+                                Delete
                         </button>
                     </td>
                 </tr>

@@ -16,7 +16,7 @@ export class PhotoComponent implements OnInit {
   searchForm!: FormGroup;
   photo: any =[];
   AlbumForm!: FormGroup;
-  CardPhotoForm!: FormGroup;
+ // CardPhotoForm!: FormGroup;
   album!: Album;
   
   constructor(
